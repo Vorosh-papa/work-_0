@@ -4,6 +4,53 @@ using System.Threading.Channels;
 
 namespace work_2
 {
+    class input
+    {
+        public static int inputNum()
+        {
+            int intNum;
+            while (true)
+            {
+                string stringNum = Console.ReadLine();
+
+                if (int.TryParse(stringNum, out intNum))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("error! Это не целое число, введите целое число");
+                }
+            }
+            return intNum;
+        }
+        public static int inputLevel()
+        {
+            int intLevel;
+            while (true)
+            {
+                string stringLevel = Console.ReadLine();
+
+                if(int.TryParse(stringLevel, out intLevel))
+                {
+                    if (intLevel<4 & intLevel>0 )
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("error! Это не число не подходит, введите целое число от 1 до 3");
+                    }
+
+                }
+                else 
+                {
+                    Console.WriteLine("error! Это не целое число, введите целое число");
+                }
+            }
+            return intLevel;
+        }
+    }
     class work_2
     {
 
@@ -17,7 +64,7 @@ namespace work_2
                 Console.WriteLine("2 - от 1 до 1000");
                 Console.WriteLine("3 - от 1 до 10000");
 
-                int level = input.inputNum();
+                int level = input.inputLevel();
              
                 Random random = new Random();
                 int randomNumber = 0;
@@ -44,19 +91,18 @@ namespace work_2
                         range = 10000;
                         break;
                 }
-
+                string temp_answer = "отсутсвует";
+                int temp_difference = 0;
                 while (true)
                 {
                     a_try++;
                     string answer;
-                    string temp_answer = "отсутсвует";
                     string deviation;
                     int number = input.inputNum();
                     int difference = Math.Abs(number - randomNumber);
-                    int temp_difference = 0;
                     if (number == randomNumber)
                     {
-                        Console.WriteLine($"Вы угадали с {a_try} попытки, загаданное число - {randomNumber}!");
+                        Console.WriteLine($"Вы угадали с {a_try}-ой попытки, загаданное число - {randomNumber}!");
                         break;
                     }
                     else
@@ -100,7 +146,7 @@ namespace work_2
                             {
                                 deviation = "всё, как прежде";
                             }
-                            Console.WriteLine(deviation);
+                            Console.WriteLine($"{answer}, но {deviation}");
                         }
                         else
                         {
