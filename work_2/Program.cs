@@ -39,7 +39,7 @@ namespace work_2
                     }
                     else
                     {
-                        Console.WriteLine("error! Это не число не подходит, введите целое число от 1 до 3");
+                        Console.WriteLine("error! Это число не подходит, введите целое число от 1 до 3");
                     }
 
                 }
