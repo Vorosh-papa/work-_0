@@ -76,17 +76,17 @@ namespace work_2
                 switch (level)
                 {
                     case 1:
-                        randomNumber = random.Next(1, 100);
+                        randomNumber = random.Next(1, 101);
                         Console.WriteLine("Выбран уровень 1. Загадано число от 1 до 100, отгадайте!");
                         range = 100;
                         break;
                     case 2:
-                        randomNumber = random.Next(1, 1000);
+                        randomNumber = random.Next(1, 1001);
                         Console.WriteLine("Выбран уровень 2. Загадано число от 1 до 1000, отгадайте!");
                         range = 1000;
                         break;
                     case 3:
-                        randomNumber = random.Next(1, 10000);
+                        randomNumber = random.Next(1, 10001);
                         Console.WriteLine("Выбран уровень 3. Загадано число от 1 до 10000, отгадайте!");
                         range = 10000;
                         break;
