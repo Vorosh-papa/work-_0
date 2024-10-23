@@ -1,0 +1,58 @@
+﻿@page
+@model omg.Pages.students.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>student</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.student.name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.student.name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.student.surname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.student.surname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.student.patronymic)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.student.patronymic)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.student.date_of_birth)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.student.date_of_birth)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.student.place_of_residence)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.student.place_of_residence)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.student.group_id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.student.group_id)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="student.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

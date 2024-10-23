@@ -1,0 +1,43 @@
+﻿@page
+@model omg.Pages.assessments.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>assessmentka</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.assessmentka.assessment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.assessmentka.assessment)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.assessmentka.subject_taught_id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.assessmentka.subject_taught_id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.assessmentka.student_id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.assessmentka.student_id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.assessmentka.date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.assessmentka.date)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.assessmentka.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

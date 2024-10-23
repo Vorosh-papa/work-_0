@@ -1,0 +1,55 @@
+﻿@page
+@model omg.Pages.teachers.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>teacher</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.teacher.name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.teacher.name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.teacher.surname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.teacher.surname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.teacher.patronymic)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.teacher.patronymic)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.teacher.date_of_birth)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.teacher.date_of_birth)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.teacher.place_of_residence)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.teacher.place_of_residence)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.teacher.salary)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.teacher.salary)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.teacher.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

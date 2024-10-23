@@ -1,0 +1,59 @@
+﻿@page
+@model omg.Pages.teachers.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>teacher</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="teacher.name" class="control-label"></label>
+                <input asp-for="teacher.name" class="form-control" />
+                <span asp-validation-for="teacher.name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="teacher.surname" class="control-label"></label>
+                <input asp-for="teacher.surname" class="form-control" />
+                <span asp-validation-for="teacher.surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="teacher.patronymic" class="control-label"></label>
+                <input asp-for="teacher.patronymic" class="form-control" />
+                <span asp-validation-for="teacher.patronymic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="teacher.date_of_birth" class="control-label"></label>
+                <input asp-for="teacher.date_of_birth" class="form-control" />
+                <span asp-validation-for="teacher.date_of_birth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="teacher.place_of_residence" class="control-label"></label>
+                <input asp-for="teacher.place_of_residence" class="form-control" />
+                <span asp-validation-for="teacher.place_of_residence" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="teacher.salary" class="control-label"></label>
+                <input asp-for="teacher.salary" class="form-control" />
+                <span asp-validation-for="teacher.salary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
