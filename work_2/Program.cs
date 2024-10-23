@@ -2,54 +2,9 @@
 using System.Threading.Channels;
 
 
-namespace lesson2
+namespace work_2
 {
-    class input
-    {
-        public static int inputNum()
-        {
-            int intNum;
-            while (true)
-            {
-                string stringNum = Console.ReadLine();
-
-                if (int.TryParse(stringNum, out intNum))
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Ошибка! Вы ввели не число, попробуйте снова");
-                }
-            }
-            return intNum;
-        }
-        public static bool inputBool()
-        {
-            bool b;
-            while (true)
-            {
-                string q = Console.ReadLine();
-                if (q == "1")
-                {
-                    b = true;
-                    break;
-                }
-                else if (q == "0")
-                {
-                    b = false;
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Ошибка! Введите 1 или 0");
-                }
-            }
-            return b;
-        }
-
-    }
-    class lesson2
+    class work_2
     {
 
         static void Main()
@@ -57,69 +12,107 @@ namespace lesson2
 
             while (true)
             {
-                Console.WriteLine("Это игра Угадай число");
-                Console.WriteLine("Для начала выберите уровень сложности");
-                Console.WriteLine("1 - от 1 до 10");
-                Console.WriteLine("2 - от 1 до 100");
-                Console.WriteLine("3 - от 1 до 1000");
+                Console.WriteLine("Выберите уровень");
+                Console.WriteLine("1 - от 1 до 100");
+                Console.WriteLine("2 - от 1 до 1000");
+                Console.WriteLine("3 - от 1 до 10000");
 
-                int difficulty = input.inputNum();
-
-                Console.WriteLine("Хотите ли вы получать подсказки (больше/меньше) при угадовании числа? Если да введите - 1, если не - 0");
-                bool help = input.inputBool();
-
+                int level = input.inputNum();
+             
                 Random random = new Random();
                 int randomNumber = 0;
 
-                int attemp = 0;
+                int a_try = 0;
 
-                switch (difficulty)
+                int range = 0;
+
+                switch (level)
                 {
                     case 1:
-                        randomNumber = random.Next(1, 10);
-                        Console.WriteLine("Вы выбрали уровень сложности 1. Отгадайте число от 1 до 10. Давайте начнем!");
+                        randomNumber = random.Next(1, 100);
+                        Console.WriteLine("Выбран уровень 1. Загадано число от 1 до 100, отгадайте!");
+                        range = 100;
                         break;
                     case 2:
-                        randomNumber = random.Next(1, 100);
-                        Console.WriteLine("Вы выбрали уровень сложности 2. Отгадайте число от 1 до 100. Давайте начнем!");
+                        randomNumber = random.Next(1, 1000);
+                        Console.WriteLine("Выбран уровень 2. Загадано число от 1 до 1000, отгадайте!");
+                        range = 1000;
                         break;
                     case 3:
-                        randomNumber = random.Next(1, 1000);
-                        Console.WriteLine("Вы выбрали уровень сложности 3. Отгадайте число от 1 до 1000. Давайте начнем!");
+                        randomNumber = random.Next(1, 10000);
+                        Console.WriteLine("Выбран уровень 3. Загадано число от 1 до 10000, отгадайте!");
+                        range = 10000;
                         break;
                 }
 
                 while (true)
                 {
-                    attemp++;
-                    string h;
-                    int num = input.inputNum();
-                    if (num == randomNumber)
+                    a_try++;
+                    string answer;
+                    string temp_answer = "отсутсвует";
+                    string deviation;
+                    int number = input.inputNum();
+                    int difference = Math.Abs(number - randomNumber);
+                    int temp_difference = 0;
+                    if (number == randomNumber)
                     {
-                        Console.WriteLine($"Вы угадали, было загаданно число {randomNumber}! Число попыток -  {attemp}");
+                        Console.WriteLine($"Вы угадали с {a_try} попытки, загаданное число - {randomNumber}!");
                         break;
-                    }
-                    else if (help)
-                    {
-                        if (randomNumber > num)
-                        {
-                            h = "Больще";
-                        }
-                        else
-                        {
-                            h = "Меньше";
-                        }
-
-                        Console.WriteLine($"Вы не угадали, загаданное число {h} {num}");
                     }
                     else
                     {
-                        Console.WriteLine("Вы не угадали, попробуйте еще");
-                    }
+                        if (difference > 0.7 * range)
+                        {
+                            answer = "бррр, Антарктида";
+                        }
+                        else if (difference > 0.4 * range)
+                        {
+                            answer = "мороз";
+                        }
+                        else if (difference > 0.2 * range)
+                        {
+                            answer = "холодно";
+                        }
+                        else if (difference > 0.1 * range)
+                        {
+                            answer = "тепло";
+                        }
+                        else if (difference > 0.05 * range)
+                        {
+                            answer = "горячо";
+                        }
+                        else
+                        {
+                            answer = "уфф, кипяток";
+                        }
 
-                }
-                Console.WriteLine("Если хотите выйти из игры введите 1, если хотите сыграть еще раз введите любой другой символл");
-                if ("1" == Console.ReadLine())
+                        if (answer == temp_answer)
+                        {
+                            if (difference > temp_difference)
+                            {
+                                deviation = "холоднее";
+                            }
+                            else if (difference < temp_difference)
+                            {
+                                deviation = "теплее";
+                            }
+                            else
+                            {
+                                deviation = "всё, как прежде";
+                            }
+                            Console.WriteLine(deviation);
+                        }
+                        else
+                        {
+                            Console.WriteLine(answer);
+                        }
+                       
+                        temp_answer = answer;
+                        temp_difference = difference;
+                    }
+                }   
+                Console.WriteLine("Если хотите остановить игру, введите no. Если хотите продолжить, введите любой другой символл");
+                if ("no" == Console.ReadLine())
                 {
                     break;
                 }
