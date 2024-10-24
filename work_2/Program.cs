@@ -4,7 +4,7 @@ using System.Threading.Channels;
 
 namespace work_2
 {
-    class input
+    class Input
     {
         public static int inputNum()
         {
@@ -64,7 +64,7 @@ namespace work_2
                 Console.WriteLine("2 - от 1 до 1000");
                 Console.WriteLine("3 - от 1 до 10000");
 
-                int level = input.inputLevel();
+                int level = Input.inputLevel();
              
                 Random random = new Random();
                 int randomNumber = 0;
@@ -93,13 +93,14 @@ namespace work_2
                 }
                 string temp_answer = "отсутсвует";
                 int temp_difference = 0;
+                string answer;
+                int number;
+                int difference;
                 while (true)
                 {
                     a_try++;
-                    string answer;
-                    string deviation;
-                    int number = input.inputNum();
-                    int difference = Math.Abs(number - randomNumber);
+                    number = Input.inputNum();
+                    difference = Math.Abs(number - randomNumber);
                     if (number == randomNumber)
                     {
                         Console.WriteLine($"Вы угадали с {a_try}-ой попытки, загаданное число - {randomNumber}!");
@@ -136,24 +137,23 @@ namespace work_2
                         {
                             if (difference > temp_difference)
                             {
-                                deviation = "холоднее";
+                                answer = "холоднее";
                             }
                             else if (difference < temp_difference)
                             {
-                                deviation = "теплее";
+                                answer = "теплее";
                             }
                             else
                             {
-                                deviation = "всё, как прежде";
+                                answer = "всё, как прежде";
                             }
-                            Console.WriteLine($"{answer}, но {deviation}");
+                            Console.WriteLine($"{temp_answer}, но {answer}");
                         }
                         else
                         {
+                            temp_answer = answer;
                             Console.WriteLine(answer);
                         }
-                       
-                        temp_answer = answer;
                         temp_difference = difference;
                     }
                 }   
