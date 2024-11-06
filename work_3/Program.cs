@@ -59,7 +59,6 @@ namespace Work_3
             {
                 Console.WriteLine("Книги с данным названием не найдено");
             }
-
         }
     }
     class Test
@@ -81,5 +80,4 @@ namespace Work_3
             library.FindBook(Console.ReadLine());
         }
     }
-
 }
